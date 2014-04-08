@@ -4,7 +4,9 @@ var express = require('express'),
     app = express();  
 
 //Setup API calls
-app.get('/stations', stations.allStations);
+app.get('/hubwaypi/stations', stations.allStations);
+app.get('/hubwaypi/stations/:id', stations.stationById);
+app.get('/hubwaypi/stations/:id/name', stations.stationName);
 
 //Configure app
 app.configure(function () {

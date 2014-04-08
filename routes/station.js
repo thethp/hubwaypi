@@ -1,5 +1,5 @@
 //Declarations
-var yql = 'http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('select * from xml where url="https://www.thehubway.com/data/stations/bikeStations.xml"')+'&format=xml&callback=?',
+var yql = 'htt>p://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('select * from xml where url="https://www.thehubway.com/data/stations/bikeStations.xml"')+'&format=xml&callback=?',
     mongo = require('mongodb'),
     Server = mongo.Server,
     Db = mongo.Db,
@@ -62,5 +62,39 @@ exports.allStations = function(req, res) {
 		}
 	    });
 	}
+    });
+};
+
+exports.stationById = function(req, res) {
+    var id = req.params.id;
+    db.collection('stations', function(err, collection) {
+        if(err) {
+            res.send("There was an error connecting to the database");
+        } else {
+            collection.findOne({'id': id}, function(err, item) {
+                if(err) {
+                    res.send("There was an error finding your collection");
+                } else {
+                    res.send(item);
+                }
+            });
+        }
+    });
+};
+
+exports.stationName = function(req, res) {
+    var id = req.params.id;
+    db.collection('stations', function(err, collection) {
+        if(err) {
+            res.send("There was an error connecting to the database");
+        } else {
+            collection.findOne({'id': id}, function(err, item) {
+                if(err) {
+                    res.send("There was an error finding your collection");
+                } else {
+                    res.send(item.name[0]);
+                }
+            });
+        }
     });
 };

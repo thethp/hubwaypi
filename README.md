@@ -51,4 +51,5 @@ EG: http://thpcod.es/hubwaypi/stations/3
 /stations/ID/ATTRIBUTE
 ```
 EG: http://thpcod.es/hubwaypi/stations/3/name
+
 EG: http:://thpcod.es/hubwaypi/stations/4/lat

@@ -18,6 +18,8 @@ db.open(function(err, db) {
 	    if(err) {
 		console.log("Stations DB does not exist, creating it.");
 		populateDB();
+	    } else {
+		console.log("Connected to database");
 	    }
 	});
     } else {
@@ -45,3 +47,20 @@ var populateDB = function() {
 	});
     });
 }
+
+//API CALLS
+exports.allStations = function(req, res) {
+    db.collection('stations', function(err, collection) {
+	if(err) {
+	    res.send("There was an error connecting to the database");
+	} else {
+	    collection.find().toArray(function(err, items) {
+		if(err) {
+		    res.send("There was an error finding your collection");
+		} else {
+		    res.send(items);
+		}
+	    });
+	}
+    });
+};

@@ -3,6 +3,10 @@ var express = require('express'),
     stations = require('./routes/station'),
     app = express();  
 
+//Setup API calls
+app.get('/stations', stations.allStations);
+
+//Configure app
 app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());

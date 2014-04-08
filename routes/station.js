@@ -7,7 +7,8 @@ var yql = 'http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('sele
     db = new Db('stationDB', server),
     jsdom = require('jsdom'),
     window = jsdom.jsdom().parentWindow,
-    $ = require('jquery')(window);
+    $ = require('jquery')(window),
+    parseString = require('xml2js').parseString;
 
 //Open database
 db.open(function(err, db) {
@@ -27,23 +28,20 @@ db.open(function(err, db) {
 //Create Database
 var populateDB = function() {
     $.getJSON(yql, function(data) {
-	var xml = data.results[0],
-	    $xml = $($.parseXML(xml)),
-	    stations = [];
-
-	$xml.find('station').each(function(i) {
-            console.log($(this).find('name').text());
-	    
-	});
-
-	db.collection('stations', function(err, collection) {
-	    collection.insert(stations, {safe: true}, function(err, result) {
-		if(err) {
-		    console.log("DB successfully created");
-		} else {
-		    console.log("Error creating database: " + err);
-		}
-	    });
+	parseString(data.results[0], function(err, json){
+	    if(err) {
+		console.log("Error parsing XML: " + err);
+	    } else {
+		db.collection('stations', function(err, collection) {
+		    collection.insert(json.stations.station, {safe: true}, function(err, result) {
+			if(err) {
+			    console.log("Error creating database: " + err);
+			} else {
+			    console.log("Database created successfully!");
+			}
+		    });
+		});
+	    }
 	});
     });
 }

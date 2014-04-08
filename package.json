@@ -21,6 +21,10 @@
   "homepage": "http://thpcod.es",
   "private": true,
   "dependencies":  {
-    "express": "3.x"
+    "express": "3.x",
+    "xml2js": "0.4.2",
+    "jquery": "2.1.0",
+    "jsdom": "0.10.5",
+    "mongodb": "1.4.0"
   }
 }

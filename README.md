@@ -1,7 +1,7 @@
 hubwaypi
 ========
 
-An API for hubway information that returns information as json instead of having to navigate that XML file
+An API for hubway information that returns information as json instead of having to navigate that XML file, built using node, express, and mongoDB
 
 #Goals
 The goal of this project is to create an API for the hubway data, so that people can make cool things using all the information they have available.

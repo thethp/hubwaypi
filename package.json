@@ -1,0 +1,26 @@
+{
+  "name": "hubwaypi",
+  "version": "0.0.1",
+  "description": "An API for hubway information that returns information as json instead of having to navigate that XML file",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thethp/hubwaypi.git"
+  },
+  "keywords": [
+    "hubway"
+  ],
+  "author": "Todd H. Page",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thethp/hubwaypi/issues"
+  },
+  "homepage": "http://thpcod.es",
+  "private": true,
+  "dependencies":  {
+    "express": "3.x"
+  }
+}

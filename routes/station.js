@@ -82,8 +82,9 @@ exports.stationById = function(req, res) {
     });
 };
 
-exports.stationName = function(req, res) {
+exports.stationAttr = function(req, res) {
     var id = req.params.id;
+    var attr = req.params.attr;
     db.collection('stations', function(err, collection) {
         if(err) {
             res.send("There was an error connecting to the database");
@@ -92,7 +93,7 @@ exports.stationName = function(req, res) {
                 if(err) {
                     res.send("There was an error finding your collection");
                 } else {
-                    res.send(item.name[0]);
+                    res.send(item[attr][0]);
                 }
             });
         }

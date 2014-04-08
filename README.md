@@ -32,10 +32,25 @@ EG: http://thpcod.es/hubwaypi/stations
 ```
 EG: http://thpcod.es/hubwaypi/stations/3
 
-**Station Name**
-- returns the name of the station when given a specific id
-- returns as string
+**Station Attribute**
+- returns the requested attribute of the station when given a specific id
+- id: returns the id of the station [as String]
+- name: returns the name of the station [as String]
+- terminalName: returns the terminalName of the station [as String]
+- lastCommWithServer: returns the timestamp of the last communication of this station with the server [as String]
+- lat: returns the latitude of this station [as String]
+- long: returns the longitude of this station [as String]
+- installed: returns true or false depending on whether or not this station is installed [as String]
+- locked: returns true or false depending on whether or not this station is locked [as String]
+- installDate: returns a timestamp for the install date of this station [as String]
+- removalDate: if valid, returns a timestamp for the removal date of this station, otherwise returns null [as String]
+- temporary: returns true or false depending on whether or not this dock is temporary [as String]
+- public: returns true or false depending on whether or not this station is public [as String]
+- nbBikes: returns the number of bikes at this station at the present moment [as String]
+- nbEmptyDocks: returns the number of empty docks at this station at the present moment [at String]
+- latestUpdateTime: returns a timestamp of the last time this information is updated [as String]
 ```
-/stations/ID/name
+/stations/ID/ATTRIBUTE
 ```
 EG: http://thpcod.es/hubwaypi/stations/3/name
+EG: http:://thpcod.es/hubwaypi/stations/4/lat

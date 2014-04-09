@@ -3,6 +3,8 @@ hubwaypi
 
 An API for hubway information that returns information as json instead of having to navigate that XML file, built using node, express, and mongoDB
 
+Hubway is the public bike system in Boston.  It is a series of stations around the city with docks.  There is an XML hidden away in the background of the site with data about the stations including where they are and how many bikes/empty docks are at them presently but navigating XML is a pain in the ass, so rather than every developer having to do that themselves, why not just have one API for everyone to use.
+
 #Goals
 The goal of this project is to create an API for the hubway data, so that people can make cool things using all the information they have available.
 

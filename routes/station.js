@@ -1,5 +1,5 @@
 //Declarations
-var yql = 'htt>p://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('select * from xml where url="https://www.thehubway.com/data/stations/bikeStations.xml"')+'&format=xml&callback=?',
+var yql = 'http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('select * from xml where url="https://www.thehubway.com/data/stations/bikeStations.xml"')+'&format=xml&callback=?',
     mongo = require('mongodb'),
     Server = mongo.Server,
     Db = mongo.Db,
@@ -8,7 +8,8 @@ var yql = 'htt>p://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('sel
     jsdom = require('jsdom'),
     window = jsdom.jsdom().parentWindow,
     $ = require('jquery')(window),
-    parseString = require('xml2js').parseString;
+    parseString = require('xml2js').parseString,
+    updateLive = ["lastCommWithServer", "nbBikes", "nbEmptyDocks", "latestUpdateTime"];
 
 //Open database
 db.open(function(err, db) {
@@ -17,9 +18,10 @@ db.open(function(err, db) {
 	db.collection('stations', {strict: true}, function(err, collection) {
 	    if(err) {
 		console.log("Stations DB does not exist, creating it.");
-		populateDB();
+		populateDB(true);
 	    } else {
-		console.log("Connected to database");
+		console.log("Updating database");
+		populateDB(false);
 	    }
 	});
     } else {
@@ -28,20 +30,35 @@ db.open(function(err, db) {
 });
 
 //Create Database
-var populateDB = function() {
+var populateDB = function(isInitiation, req, res) {
     $.getJSON(yql, function(data) {
 	parseString(data.results[0], function(err, json){
+            var date = new Date(),
+	        t = date.getTime();
 	    if(err) {
 		console.log("Error parsing XML: " + err);
 	    } else {
 		db.collection('stations', function(err, collection) {
-		    collection.insert(json.stations.station, {safe: true}, function(err, result) {
-			if(err) {
-			    console.log("Error creating database: " + err);
-			} else {
-			    console.log("Database created successfully!");
+		    console.log("whatever");
+		    if(isInitiation) {
+		        collection.insert(json.stations.station, {safe: true}, function(err, result) {
+			    if(err) {
+			        console.log("Error creating database: " + err);
+			    } else {
+			        console.log("Database created successfully!");
+			    }
+		        });
+		    } else {
+			for(var i=0; i < json.stations.station.length; i++) {
+			    json.stations.station[i].updatedInfoTime = t;
+			    collection.update({id: json.stations.station[i].id}, json.stations.station[i], function(err, result) {
+				console.log("Updated station: " + json.stations.station[i].id);
+                            });
 			}
-		    });
+			if (req != undefined) {
+                            exports.stationAttr(req,res);
+                        }
+		    }
 		});
 	    }
 	});
@@ -83,8 +100,10 @@ exports.stationById = function(req, res) {
 };
 
 exports.stationAttr = function(req, res) {
-    var id = req.params.id;
-    var attr = req.params.attr;
+    var id = req.params.id,
+        attr = req.params.attr,
+        date = new Date();
+    
     db.collection('stations', function(err, collection) {
         if(err) {
             res.send("There was an error connecting to the database");
@@ -93,7 +112,12 @@ exports.stationAttr = function(req, res) {
                 if(err) {
                     res.send("There was an error finding your collection");
                 } else {
-                    res.send(item[attr][0]);
+		    if(updateLive.indexOf(attr) != -1 && date.getTime()-item.updatedInfoTime > 300000) {
+			console.log("Data is out of date.");
+			populateDB(false, req, res);
+		    } else {
+			res.send(item[attr][0]);
+		    }
                 }
             });
         }

@@ -28,9 +28,9 @@ EG: http://thpcod.es/hubwaypi/stations
 - returns a single station as identified by it's ID
 - returns as json
 ```
-/stations/ID
+/stations/id/ID
 ```
-EG: http://thpcod.es/hubwaypi/stations/3
+EG: http://thpcod.es/hubwaypi/stations/id/3
 
 **Station Attribute**
 - returns the requested attribute of the station when given a specific id
@@ -52,6 +52,14 @@ EG: http://thpcod.es/hubwaypi/stations/3
 ```
 /stations/ID/ATTRIBUTE
 ```
-EG: http://thpcod.es/hubwaypi/stations/3/name
+EG: http://thpcod.es/hubwaypi/stations/id/3/nbBikes
 
-EG: http:://thpcod.es/hubwaypi/stations/4/lat
+EG: http:://thpcod.es/hubwaypi/stations/id/4/lat
+
+**Stations with more than X bikes**
+- returns a list of all the stations with more than the NUM provided bikes
+- returns as json
+```
+/stations/gt/NUM
+```
+EG: http://thpcod.es/hubwaypi/stations/gt/5

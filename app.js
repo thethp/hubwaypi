@@ -5,8 +5,9 @@ var express = require('express'),
 
 //Setup API calls
 app.get('/hubwaypi/stations', stations.allStations);
-app.get('/hubwaypi/stations/:id', stations.stationById);
-app.get('/hubwaypi/stations/:id/:attr', stations.stationAttr);
+app.get('/hubwaypi/stations/id/:id', stations.stationById);
+app.get('/hubwaypi/stations/id/:id/:attr', stations.stationAttr);
+app.get('/hubwaypi/stations/gt/:num', stations.stationsByBikeQty);
 
 //Configure app
 app.configure(function () {

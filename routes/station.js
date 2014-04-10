@@ -66,6 +66,7 @@ var populateDB = function(isInitiation, req, res) {
 }
 
 //API CALLS
+//return all stations as JSON
 exports.allStations = function(req, res) {
     db.collection('stations', function(err, collection) {
 	if(err) {
@@ -82,6 +83,7 @@ exports.allStations = function(req, res) {
     });
 };
 
+//return a specific station by it's id
 exports.stationById = function(req, res) {
     var id = req.params.id;
     db.collection('stations', function(err, collection) {
@@ -99,6 +101,7 @@ exports.stationById = function(req, res) {
     });
 };
 
+//return a specific station attribute
 exports.stationAttr = function(req, res) {
     var id = req.params.id,
         attr = req.params.attr,
@@ -118,6 +121,25 @@ exports.stationAttr = function(req, res) {
 		    } else {
 			res.send(item[attr][0]);
 		    }
+                }
+            });
+        }
+    });
+};
+
+//return  all stations with bikes greater than num provided by customer
+exports.stationsByBikeQty = function(req, res) {
+    var bikeQty = req.params.num;
+
+    db.collection('stations', function(err, collection) {
+        if(err) {
+            res.send("There was an error connecting to the database");
+        } else {
+            collection.find({nbBikes:{$gt:bikeQty}}).toArray(function(err, items) {
+                if(err) {
+                    res.send("There was an error finding your collection");
+                } else {
+                    res.send(items);
                 }
             });
         }

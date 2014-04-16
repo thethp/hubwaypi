@@ -63,3 +63,14 @@ EG: http:://thpcod.es/hubwaypi/stations/id/4/lat
 /stations/gt/NUM
 ```
 EG: http://thpcod.es/hubwaypi/stations/gt/5
+
+**Closest Stations**
+- returns a list of stations sorted by closeness given a latitude, longitude, and optional number of stations
+- if no number of stations submitted, will return all stations
+- returns as json
+```
+/stations/closest/LAT/LONG/NUM
+```
+EG: http://thpcod.es/hubwaypi/stations/closest/42.370379/-71.101735/3
+
+EG: http://thpcod.es/hubwaypi/stations/closest/42.370379/-71.101735

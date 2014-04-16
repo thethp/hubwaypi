@@ -39,21 +39,25 @@ var populateDB = function(isInitiation, req, res) {
 		console.log("Error parsing XML: " + err);
 	    } else {
 		db.collection('stations', function(err, collection) {
-		    console.log("whatever");
+		    for(var i=0; i < json.stations.station.length; i++) {
+			json.stations.station[i].updatedInfoTime = t;
+			json.stations.station[i].loc = [parseFloat(json.stations.station[i].long[0]), parseFloat(json.stations.station[i].lat[0])];
+		    }
 		    if(isInitiation) {
-		        collection.insert(json.stations.station, {safe: true}, function(err, result) {
+		         collection.insert(json.stations.station, {safe: true}, function(err, result) {
 			    if(err) {
 			        console.log("Error creating database: " + err);
 			    } else {
 			        console.log("Database created successfully!");
+				collection.ensureIndex({loc: "2d" });
 			    }
 		        });
 		    } else {
 			for(var i=0; i < json.stations.station.length; i++) {
-			    json.stations.station[i].updatedInfoTime = t;
 			    collection.update({id: json.stations.station[i].id}, json.stations.station[i], function(err, result) {
 				console.log("Updated station: " + json.stations.station[i].id);
-                            });
+			    });
+			    collection.ensureIndex({loc: "2d" });
 			}
 			if (req != undefined) {
                             exports.stationAttr(req,res);
@@ -140,6 +144,31 @@ exports.stationsByBikeQty = function(req, res) {
                     res.send("There was an error finding your collection");
                 } else {
                     res.send(items);
+                }
+            });
+        }
+    });
+};
+
+//return the closest station
+exports.closestStation = function(req, res) {
+    var lat = parseFloat(req.params.lat),
+        long = parseFloat(req.params.long),
+        num = req.params.num;
+    
+    db.collection('stations', function(err, collection) {
+        if(err) {
+            res.send("There was an error connecting to the database");
+        } else {
+            collection.find({loc:{$near:[long, lat],$maxDistance: 1}}).toArray(function(err, items) {
+                if(err) {
+                    res.send("There was an error finding your collection: "+ err);
+                } else {
+		    if(num !== undefined) {
+			res.send(items.slice(0,num));
+		    } else {
+			res.send(items);
+		    }
                 }
             });
         }

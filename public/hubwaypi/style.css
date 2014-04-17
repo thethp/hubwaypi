@@ -67,7 +67,9 @@ ul.calls li:hover, ul.calls li.active {
   position: relative;
   font-family: courier;
   padding: 15px;
+  font-size: 18px;
   background-color: #D55970;
+  text-shadow: 1px 1px #E69696;
 }
 .arrow {
   position: absolute;
@@ -81,9 +83,6 @@ ul.calls li:hover, ul.calls li.active {
 }
 .details {
   padding: 10px 5px;
-}
-span {
-  font-weight: bold;
 }
 .details ul {
   margin: 0px;

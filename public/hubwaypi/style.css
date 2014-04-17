@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #76C0E2;
+  color: #3C2401;
+  font-family: helvetica;
+  text-align: center;
+  padding: 0 50px;
+}
+h1 {
+  font-size: 50px;
+  color: #FFF;
+}
+img.logo {
+  width: 200px;
+  height: 200px;
+  margin: -20px auto 0;
+}
+div{
+  text-align: left;
+}
+a {
+  color: #D55970;
+  text-decoration: none;
+}
+.callsContent {
+  display: table;
+  width: 100%;
+}
+.titleBar {
+  width: 100%;
+  background-color: #FFF;
+  font-size: 20px;
+  text-align: left;
+  padding: 5px 10px;
+  border: 2px solid #E69696;
+  border-bottom: 0px;
+}
+ul.calls {
+  width: 20%;
+  display: table-cell;
+  vertical-align: top;
+  background-color: #E69696;
+  padding: 2px;
+  margin: 0;
+}
+ul.calls li {
+  list-style-type: none;
+  padding: 10px;
+  background-color: #E69696;
+  cursor: pointer;
+}
+ul.calls li:hover, ul.calls li.active {
+  background-color: #D55970;
+}
+.callInfo {
+  display: table-cell;
+  vertical-align: top;
+  background-color: #FFF;
+  width: 80%;
+  padding: 15px;
+  border: 2px solid #E69696;
+  border-left: 0px;
+}
+.code {
+  position: relative;
+  font-family: courier;
+  padding: 15px;
+  background-color: #D55970;
+}
+.arrow {
+  position: absolute;
+  padding: 2px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  width: 80px;
+  background-image: url(http://thpcod.es/images/toolslogo.png) left top no-repeat;
+  background-size: 20px 30px;
+}
+.details {
+  padding: 10px 5px;
+}
+span {
+  font-weight: bold;
+}
+.details ul {
+  margin: 0px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+.details ul li {
+  list-style-type: none;
+}
+.details ul li:before {
+  content:"-"; 
+  position:relative; 
+  left:-5px;
+} 
+
+.github-fork-ribbon {
+  /* The right and left classes determine the side we attach our banner to */
+  position: absolute;
+
+  /* Add a bit of padding to give some substance outside the "stitching" */
+  padding: 2px 0;
+
+  /* Set the base colour */
+  background-color: #D4576F;
+
+  /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+
+  /* Add a drop shadow */
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.github-fork-ribbon a,
+.github-fork-ribbon a:hover {
+  /* Set the font */
+  font: 700 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff;
+
+  /* Set the text properties */
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+
+  /* Set the geometry. If you fiddle with these you'll also need
+     to tweak the top and right values in .github-fork-ribbon. */
+  width: 200px;
+  line-height: 20px;
+
+  /* Set the layout properties */
+  display: inline-block;
+  padding: 2px 0;
+
+  /* Add "stitching" effect */
+  border-width: 1px 0;
+  border-style: dotted;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.github-fork-ribbon-wrapper {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.github-fork-ribbon-wrapper.left {
+  left: 0;
+}
+
+.github-fork-ribbon-wrapper.left .github-fork-ribbon {
+  top: 42px;
+  left: -43px;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+

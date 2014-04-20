@@ -1,42 +1,43 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="github-fork-ribbon-wrapper left">
-  <div class="github-fork-ribbon">
-    <a href="https://github.com/thethp/hubwaypi">Fork me on GitHub</a>
-  </div>
-</div>
-<h1>HubwAyPI</h1>
-<img class="logo" src="http://thpcod.es/images/toolslogo.png">
-<div>
-  <p>The hubway is the bike share system in Boston, MA. It is comprised of a series of stations with bike docks around the city and surrounding towns that users can use for 30 minutes periods.</p>
-  <p>This API is an open source system to make hubway information accessible and easy to play with. The goal of this project is to make it easier for developers to play with and make things with the information hidden away behind the hubway bike system</p>
-  <p>All calls are made from the url <a href="http://thpcod.es/hubwaypi">http://thpcod.es/hubwaypi</a></p>
-</div>
-<div class="calls">
-  <div class="titleBar">API Calls</div>
-  <div class="callsContent">
-    <ul class="calls">
-      <li class="active" dataKey="all">All Stations</li>
-      <li dataKey="closest">Closest Station[s]</li>
-      <li dataKey="single">Single Station</li>
-      <li dataKey="details">+ Station Details</li>
-      <li dataKey="num">Number of bikes</li>
-    </ul>
-    <div class="callInfo">
+  <div class="github-fork-ribbon-wrapper left">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/thethp/hubwaypi">Fork me on GitHub</a>
     </div>
   </div>
-</div>
-<div>
-  <p>To contribute to this API/see the code behind it, please checkout: <a href="https://github.com/thethp/hubwaypi">https://github.com/thethp/hubwaypi</a></p>
-  <p>HubwAyPI was created under the MIT open Source license, so go nuts! It was created by <a href="http://toddhpage.com">Todd H. Page</a> with no permission whatsoever, for better or for worse!  It uses Node, Express, and MongoDB</p>
-</div>
-</body>
+  <h1>HubwAyPI</h1>
+  <img class="logo" src="http://thpcod.es/images/toolslogo.png">
+  <div>
+    <p>The hubway is the bike share system in Boston, MA. It is comprised of a series of stations with bike docks around the city and surrounding towns that users can use for 30 minutes periods.</p>
+    <p>This API is an open source system to make hubway information accessible and easy to play with. The goal of this project is to make it easier for developers to play with and make things with the information hidden away behind the hubway bike system</p>
+    <p>All calls are made from the url <a href="http://thpcod.es/hubwaypi">http://thpcod.es/hubwaypi</a></p>
+  </div>
+  <div class="calls">
+    <div class="titleBar">API Calls</div>
+    <div class="callsContent">
+      <ul class="calls">
+        <li class="active" dataKey="all">All Stations</li>
+        <li dataKey="closest">Closest Station[s]</li>
+        <li dataKey="single">Single Station</li>
+        <li dataKey="details">Station Detail</li>
+        <li dataKey="num">Number of bikes</li>
+      </ul>
+      <div class="callInfo">
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>To contribute to this API/see the code behind it, please checkout: <a href="https://github.com/thethp/hubwaypi">https://github.com/thethp/hubwaypi</a></p>
+    <p>HubwAyPI was created under the MIT open Source license, so go nuts! It was created by <a href="http://toddhpage.com">Todd H. Page</a> with no permission whatsoever, for better or for worse!  It uses Node, Express, and MongoDB</p>
+  </div>
+<body>
+
 <!-- Templates -->
 <script id="codeInfo" type="text/x-handlebars-template">
-  <div class="allStations">
+  <div class="detailsCol">
     <div class="code">
       {{code}}
       <div class="arrow"></div>

@@ -37,7 +37,7 @@ a {
   border: 2px solid #E69696;
   border-bottom: 0px;
 }
-ul.calls {
+ul.calls, ul.secondMenu {
   width: 20%;
   display: table-cell;
   vertical-align: top;
@@ -45,13 +45,16 @@ ul.calls {
   padding: 2px;
   margin: 0;
 }
-ul.calls li {
+ul.secondMenu {
+  background-color: #E6D071;
+}
+ul.calls li, ul.secondMenu li {
   list-style-type: none;
   padding: 10px;
   background-color: #E69696;
   cursor: pointer;
 }
-ul.calls li:hover, ul.calls li.active {
+ul.calls li:hover, ul.calls li.active, ul.secondMenu li:hover, ul.secondMenu li.active {
   background-color: #D55970;
 }
 .callInfo {
@@ -62,6 +65,7 @@ ul.calls li:hover, ul.calls li.active {
   padding: 15px;
   border: 2px solid #E69696;
   border-left: 0px;
+  position: relative;
 }
 .code {
   position: relative;
@@ -70,16 +74,6 @@ ul.calls li:hover, ul.calls li.active {
   font-size: 18px;
   background-color: #D55970;
   text-shadow: 1px 1px #E69696;
-}
-.arrow {
-  position: absolute;
-  padding: 2px;
-  right: 2px;
-  top: 2px;
-  bottom: 2px;
-  width: 80px;
-  background-image: url(http://thpcod.es/images/toolslogo.png) left top no-repeat;
-  background-size: 20px 30px;
 }
 .details {
   padding: 10px 5px;
@@ -93,10 +87,20 @@ ul.calls li:hover, ul.calls li.active {
   list-style-type: none;
 }
 .details ul li:before {
-  content:"-"; 
-  position:relative; 
+  content:"-";
+  position:relative;
   left:-5px;
-} 
+}
+.secondMenu {
+  width: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #900;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
 .github-fork-ribbon {
   /* The right and left classes determine the side we attach our banner to */
@@ -176,4 +180,3 @@ ul.calls li:hover, ul.calls li.active {
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-

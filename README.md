@@ -1,4 +1,4 @@
-hubwaypi
+hubwaypi - http://thpcod.es/hubwaypi
 ========
 
 An API for hubway information that returns information as json instead of having to navigate that XML file, built using node, express, and mongoDB
@@ -8,7 +8,7 @@ Hubway is the public bike system in Boston.  It is a series of stations around t
 #Goals
 The goal of this project is to create an API for the hubway data, so that people can make cool things using all the information they have available.
 
-It is currently heavily under development by Todd Page, but is distributed under the MIT license, so go nuts.  I have a lot of things to finish [see the issues] but I'd like to finish them myself, then open it to pull requests etc.
+It is currently heavily under development by Todd Page, but is distributed under the MIT license, so go nuts.  There are still some things I'd like to add, it's a work in progress.
 
 Eventually I will deliver the steps necessary to get this running locally.
 

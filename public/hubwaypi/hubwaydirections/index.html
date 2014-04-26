@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no,width=device-width,height=device-height,minimal-ui" />
+    <style type="text/css">
+      * {font-family: arial,helvetica, sans-serif;}
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+      .directionsInputs {text-align: center; width: 100%; position: fixed; top: 0; left: 0; right: 0; height: 5%; max-height: 100px;z-index: 1000}
+      .controls { width: 30%; margin-right: 2%;}
+      .search { display: inline-block; cursor: pointer; width: 20%;border: 1px solid #E49307;border-radius: 3px;background-color: #FA9E25; color: #000;}
+      .error { border: 2px solid #900;}
+      #directionsPanel {position: fixed; bottom: 0; left: 0; right: 0; height: 50%; z-index: 1000; overflow: scroll; background-color: #FFF; display: none;}
+      .adp-directions { width: 100%; }
+      #map-canvas { position: fixed; top: 5%; left: 0; right: 0; bottom: 0; }
+      .directionsUp { bottom: 50%; }
+      .pac-container { width: 50% !important; }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjp8mw0dCPgLGbaZ1wrb0EPpNxcNZjxv0&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="../jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div class="directionsInputs">
+      <input id="pac-input-from" class="controls from" type="text" placeholder="From">
+      <input id="pac-input-to" class="controls to" type="text" placeholder="To">
+      <div class="search">Search</div>
+    </div>
+    <div id="directionsPanel"></div>
+    <div id="map-canvas"/>
+  </body>
+</html>

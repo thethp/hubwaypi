@@ -40,8 +40,11 @@ var populateDB = function(isInitiation, req, res) {
 	    } else {
 		db.collection('stations', function(err, collection) {
 		    for(var i=0; i < json.stations.station.length; i++) {
+			for(var key in json.stations.station[i]) {
+			    json.stations.station[i][key] = json.stations.station[i][key][0]; 
+			}
 			json.stations.station[i].updatedInfoTime = t;
-			json.stations.station[i].loc = [parseFloat(json.stations.station[i].long[0]), parseFloat(json.stations.station[i].lat[0])];
+			json.stations.station[i].loc = [parseFloat(json.stations.station[i].long), parseFloat(json.stations.station[i].lat)];
 		    }
 		    if(isInitiation) {
 		         collection.insert(json.stations.station, {safe: true}, function(err, result) {
@@ -55,7 +58,7 @@ var populateDB = function(isInitiation, req, res) {
 		    } else {
 			for(var i=0; i < json.stations.station.length; i++) {
 			    collection.update({id: json.stations.station[i].id}, json.stations.station[i], function(err, result) {
-				console.log("Updated station: " + json.stations.station[i].id);
+				console.log("Updated station: " + json.stations.station[i].id, json.stations.station[i]);
 			    });
 			    collection.ensureIndex({loc: "2d" });
 			}
